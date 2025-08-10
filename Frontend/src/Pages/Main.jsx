@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Lightbulb, Handshake, FileText, Scale, BookOpen, IndianRupee } from "lucide-react";
-import Navbar from '../Components/NavBar';
+import Navbar from '../Components/Navbar';
 import { useNavigate } from 'react-router-dom';
 
 // Main App Component

@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import AuthLayout from "../Components/AuthLayout";
 import { UserDataContext } from "../Context/UserContext";
 import axios from "axios";
-import Navbar from "../Components/NavBar";
+import Navbar from "../Components/Navbar";
 import { UserPlus } from "lucide-react";
 
 const Register = () => {

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Sidebar from "../Components/SideBar";
 import ChatArea from "../Components/CharArea";
-import Navbar from "../Components/NavBar";
+import Navbar from "../Components/Navbar";
 
 const Home = () => {
   const [oldMessages, setOldMessages] = useState([]);
