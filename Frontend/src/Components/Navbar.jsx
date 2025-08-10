@@ -138,7 +138,7 @@ const Navbar = ({isChat}) => {
 
         {/* Mobile Menu Toggle */}
         {!isChat &&<div className="md:hidden">
-          <button onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
+          <button onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu" className={` ${isActive ? "text-black" : "text-white"}`}>
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>}
