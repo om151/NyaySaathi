@@ -3,7 +3,7 @@ import Sidebar from "../Components/SideBar";
 import ChatArea from "../Components/CharArea";
 import Navbar from "../Components/Navbar";
 
-const Home = () => {
+const Chat = () => {
   const [oldMessages, setOldMessages] = useState([]);
   const [chatId, setChatId] = useState(null);
 
@@ -25,4 +25,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Chat;

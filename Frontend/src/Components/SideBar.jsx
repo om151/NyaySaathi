@@ -33,7 +33,7 @@ const Sidebar = ({ setOldMessages, setChatId }) => {
       })
       .then((response) => {
         setOldMessages(response.data.messages);
-        navigate("/home");
+        navigate("/Chat");
         setSidebarOpen(false); // close sidebar on mobile after chat select
       })
       .catch((err) => console.error("Error loading chat:", err));
@@ -42,7 +42,7 @@ const Sidebar = ({ setOldMessages, setChatId }) => {
   const handleNewChat = () => {
     setChatId(null);
     setOldMessages([]);
-    navigate("/home");
+    navigate("/Chat");
     setSidebarOpen(false);
   };
 

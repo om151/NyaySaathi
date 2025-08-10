@@ -6,11 +6,11 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 
 import Sidebar from './Components/SideBar';
 import ChatArea from './Components/CharArea';
-import Home from './Pages/Home';
 import Register from './Pages/Register';
 import Login from './Pages/Login';
 import UserProtectedWrapper from './Pages/userProtectedWrapper';
 import Main from './Pages/Main';
+import Chat from './Pages/Chat';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -19,9 +19,9 @@ function App() {
    <Router>
       <Routes>
         <Route path="/" element={<Main/>} />
-        <Route path="/home" element={
+        <Route path="/Chat" element={
         <UserProtectedWrapper>
-           <Home />
+           <Chat />
         </UserProtectedWrapper>
         } />
         <Route path="/login" element={<Login />} />

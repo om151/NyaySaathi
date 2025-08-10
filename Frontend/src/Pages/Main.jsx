@@ -108,7 +108,7 @@ const navigate = useNavigate();
                             Get expert legal advice and support, right when you need it. Free and paid options available.
                         </p>
                         <button
-                             onClick={() => navigate('/home')}
+                             onClick={() => navigate('/Chat')}
                             className="bg-white text-blue-950 border-2 border-blue-950 font-bold py-3 px-8 rounded-full text-xl shadow-lg transition duration-300 ease-in-out transform hover:scale-105 hover:bg-blue-950 hover:text-white animate-fadeInUp"
                             style={{ animationDelay: '0.4s' }}
                         >
@@ -128,7 +128,7 @@ const navigate = useNavigate();
                                 "Can police take my phone without a warrant?"
                             </div>
                             <button
-                              onClick={() => navigate('/home')}
+                              onClick={() => navigate('/Chat')}
                                 className="w-full mt-4 bg-blue-950 hover:bg-blue-900 text-white py-2 rounded-lg font-medium transition duration-200"
                             >
                                 Start Chat <i className="fas fa-comments ml-2"></i>
