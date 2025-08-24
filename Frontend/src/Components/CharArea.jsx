@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {useContext, useEffect, useState } from "react";
 import MessageInput from "./MessageInput";
 import { UserDataContext } from "../Context/UserContext";
 import axios from "axios";
@@ -9,6 +9,7 @@ const ChatArea = ({ oldMessages, cId, setOldMessages, setChatId }) => {
   const { user } = useContext(UserDataContext);
   const [chatId, setLocalChatId] = useState(cId || null);
   const [messages, setMessages] = useState(oldMessages);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setMessages(oldMessages);
@@ -19,7 +20,10 @@ const ChatArea = ({ oldMessages, cId, setOldMessages, setChatId }) => {
   }, [cId]);
 
   const handleSend = (text) => {
+    
     if (!text.trim()) return;
+
+    setIsLoading(true);
     setMessages((prev) => [...prev, { role: "user", parts: [{ text }] }]);
 
     axios
@@ -29,6 +33,7 @@ const ChatArea = ({ oldMessages, cId, setOldMessages, setChatId }) => {
         { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
       )
       .then((res) => {
+        setIsLoading(false);
         setLocalChatId(res.data.chatId);
         setChatId(res.data.chatId);
         setMessages((prev) => [
@@ -37,6 +42,7 @@ const ChatArea = ({ oldMessages, cId, setOldMessages, setChatId }) => {
         ]);
       })
       .catch((err) => {
+        setIsLoading(false);
         console.error("Error sending message:", err);
         setMessages((prev) => [
           ...prev,
@@ -68,7 +74,7 @@ const ChatArea = ({ oldMessages, cId, setOldMessages, setChatId }) => {
               {msg.role === "model" ? <Scale size={16} /> : <User size={16} />}
             </div>
 
-            {/* Message bubble */}
+           
             <div
               className={`max-w-xl px-4 py-3 rounded-2xl shadow-md text-sm leading-relaxed break-words whitespace-pre-wrap ${
                 msg.role === "model"
@@ -91,6 +97,26 @@ const ChatArea = ({ oldMessages, cId, setOldMessages, setChatId }) => {
             </div>
           </div>
         ))}
+
+        <div className="flex items-center text-center gap-2">{isLoading && (
+
+          <>
+           <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-blue-700 text-white shadow-md">
+              { <Scale size={16} />}
+            </div>
+
+             <div className="flex items-center justify-center  px-4 border-blue-200 text-blue-900 rounded-2xl">
+                    
+                    <span className="flex space-x-1">
+                    <span className="animate-bounce [animation-delay:0ms] text-4xl items-center justify-center">.</span>
+                    <span className="animate-bounce [animation-delay:200ms] text-4xl items-center justify-center">.</span>
+                    <span className="animate-bounce [animation-delay:400ms] text-4xl items-center justify-center">.</span>
+                    </span>
+                  </div>
+          </>
+                 
+                  )}</div>
+
       </div>
 
       {/* Input box */}
